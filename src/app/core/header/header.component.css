@@ -1,0 +1,12 @@
+button span {
+    vertical-align: super;
+    padding-right: 5px;
+}
+
+button {
+    margin-right: 5px;
+}
+
+.activebutton {
+    background: rgb(206, 216, 207);
+}
