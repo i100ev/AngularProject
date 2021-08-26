@@ -1,27 +1,31 @@
-<mat-toolbar>
+<mat-toolbar color="primary">
   <div>
     <button mat-icon-button routerLink="home" routerLinkActive="activebutton">
-      <!-- <span>Home</span> -->
+      <span>Home</span>
       <mat-icon>home</mat-icon>
     </button>
   </div>
-
   <div *ngIf="auth.user | async as user; else showLogin">
+    <button mat-icon-button routerLink="cloths" routerLinkActive="activebutton">
+      <span>Clothes</span>
+      <mat-icon>checkroom</mat-icon>
+    </button>
     <button mat-icon-button routerLink="profile" routerLinkActive="activebutton">
       <span>Profile</span>
-      <mat-icon >person</mat-icon>
+      <mat-icon>person</mat-icon>
     </button>
     <button mat-icon-button (click)="logout()">
       <span>Logout</span>
       <mat-icon>logout</mat-icon>
     </button>
+    
   </div>
 
   <ng-template #showLogin>
     <div>
       <button mat-icon-button routerLink="login" routerLinkActive="activebutton">
         <span>Login</span>
-        <mat-icon >login</mat-icon>
+        <mat-icon>login</mat-icon>
       </button>
       <button mat-icon-button routerLink="register" routerLinkActive="activebutton">
         <span>Register</span>
@@ -30,5 +34,5 @@
     </div>
 
   </ng-template>
-<!-- <ngx-auth-firebaseui-avatar></ngx-auth-firebaseui-avatar> -->
+  <!-- <ngx-auth-firebaseui-avatar></ngx-auth-firebaseui-avatar> -->
 </mat-toolbar>

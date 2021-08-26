@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,12 +9,23 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    public auth: AngularFireAuth
+    ) { }
 
   ngOnInit() {
   }
 
   onCreateAccountRequested(): void {
     this.router.navigate(['register']);
+  }
+  storeUserId(): void {
+    this.auth.authState.subscribe(result => {
+      if (result && result.uid) {
+        localStorage.setItem('user', result.uid);
+      }
+    });
+    this.router.navigate(['cloths']);
   }
 }

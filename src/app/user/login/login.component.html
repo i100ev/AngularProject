@@ -1,2 +1,8 @@
-<ngx-auth-firebaseui-login (onCreateAccountRequested)="onCreateAccountRequested()" appearance="standard" [resetPasswordEnabled]="false" [providers]="[]" goBackURL="home">
+<ngx-auth-firebaseui-login
+    (onCreateAccountRequested)="onCreateAccountRequested()" 
+    (onSuccess)="storeUserId()"
+    appearance="standard" 
+    [resetPasswordEnabled]="false" 
+    [providers]="[]" 
+    goBackURL="home">
 </ngx-auth-firebaseui-login>

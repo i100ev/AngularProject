@@ -1,31 +1,36 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-
-import { UserModule } from './user/user.module';
-import { CoreModule } from './core/core.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CoreModule } from './core/core.module';
+import { AppRoutingModule } from './app-routing.module';
+import { UserModule } from './user/user.module';
+
 import { environment } from 'src/environments/environment.prod';
+import { HomeModule } from './home/home.module';
 
-
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { ClothsModule } from './cloths/cloths.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
-
-    UserModule,
+    AppRoutingModule,
     CoreModule,
+    UserModule,
+    HomeModule,
+    ClothsModule,
+
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
 
     NgxAuthFirebaseUIModule.forRoot(
       environment.firebase,
@@ -33,7 +38,7 @@ import { environment } from 'src/environments/environment.prod';
       {
         enableFirestoreSync: true, // enable/disable autosync users with firestore
         toastMessageOnAuthSuccess: true, // whether to open/show a snackbar message on auth success - default : true
-        toastMessageOnAuthError: false, // whether to open/show a snackbar message on auth error - default : true
+        toastMessageOnAuthError: true, // whether to open/show a snackbar message on auth error - default : true
         authGuardFallbackURL: '/login', // url for unauthenticated users - to use in combination with canActivate feature on a route
         authGuardLoggedInURL: '/home', // url for authenticated users - to use in combination with canActivate feature on a route
         passwordMaxLength: 60, // `min/max` input parameters in components should be within this range.
@@ -46,7 +51,7 @@ import { environment } from 'src/environments/environment.prod';
         guardProtectedRoutesUntilEmailIsVerified: false,
         enableEmailVerification: false, // default: true
         useRawUserCredential: false, // If set to true outputs the UserCredential object instead of firebase.User after login and signup - Default: false
-      })
+      }),
   ],
   providers: [],
   bootstrap: [AppComponent]
