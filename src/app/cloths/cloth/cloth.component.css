@@ -1,0 +1,13 @@
+:host {
+    display: block;
+}
+
+.item {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.edit-info {
+    text-align: right;
+    color: red;
+    font-size: 12px;
+}

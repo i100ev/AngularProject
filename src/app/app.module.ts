@@ -15,19 +15,23 @@ import { HomeModule } from './home/home.module';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { ClothsModule } from './cloths/cloths.module';
+import { NotFoundComponent } from './not-found/not-found.component';
+
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [	
+    AppComponent,
+      NotFoundComponent
+   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
     CoreModule,
     UserModule,
     HomeModule,
     ClothsModule,
+    AppRoutingModule,
+
 
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
@@ -39,8 +43,8 @@ import { ClothsModule } from './cloths/cloths.module';
         enableFirestoreSync: true, // enable/disable autosync users with firestore
         toastMessageOnAuthSuccess: true, // whether to open/show a snackbar message on auth success - default : true
         toastMessageOnAuthError: true, // whether to open/show a snackbar message on auth error - default : true
-        authGuardFallbackURL: '/login', // url for unauthenticated users - to use in combination with canActivate feature on a route
-        authGuardLoggedInURL: '/home', // url for authenticated users - to use in combination with canActivate feature on a route
+        authGuardFallbackURL: 'login', // url for unauthenticated users - to use in combination with canActivate feature on a route
+        authGuardLoggedInURL: 'clothes', // url for authenticated users - to use in combination with canActivate feature on a route
         passwordMaxLength: 60, // `min/max` input parameters in components should be within this range.
         passwordMinLength: 4, // Password length min/max in forms independently of each componenet min/max.
         // Same as password but for the name

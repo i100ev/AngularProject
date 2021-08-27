@@ -6,6 +6,7 @@ import { ClothDialogComponent } from './cloth-dialog/cloth-dialog.component';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthProcessService } from 'ngx-auth-firebaseui';
 
 
 const getObservable = (collection: AngularFirestoreCollection<ICloth>) => {
@@ -17,12 +18,12 @@ const getObservable = (collection: AngularFirestoreCollection<ICloth>) => {
 };
 
 @Component({
-  selector: 'app-cloths',
+  selector: 'app-clothes',
   templateUrl: './cloths.component.html',
   styleUrls: ['./cloths.component.css']
 })
 
-export class ClothsComponent {
+export class ClothesComponent {
 
   constructor(
     private dialog: MatDialog,
@@ -33,9 +34,9 @@ export class ClothsComponent {
 
   userId = localStorage.getItem('user') as string;
 
-  clean = getObservable(this.store.collection('users').doc(this.userId).collection('clean')) as Observable<ICloth[]>;
-  dirty = getObservable(this.store.collection('users').doc(this.userId).collection('dirty')) as Observable<ICloth[]>;
-  washing = getObservable(this.store.collection('users').doc(this.userId).collection('washing')) as Observable<ICloth[]>;
+  clean = getObservable(this.store.collection('users').doc(this.userId).collection('clean', ref => ref.orderBy('title'))) as Observable<ICloth[]>;
+  dirty = getObservable(this.store.collection('users').doc(this.userId).collection('dirty', ref => ref.orderBy('title'))) as Observable<ICloth[]>;
+  washing = getObservable(this.store.collection('users').doc(this.userId).collection('washing', ref => ref.orderBy('title'))) as Observable<ICloth[]>;
 
   drop(event: CdkDragDrop<ICloth[] | null>): void {
     if (event.previousContainer === event.container) {
@@ -71,9 +72,16 @@ export class ClothsComponent {
         cloth: {}
       }
     });
-    dialogRef.afterClosed().subscribe((result: ClothDialogResult) => this.store.collection('users').doc(this.userId).collection('dirty').add(result.cloth));
-  }
 
+    dialogRef.afterClosed().subscribe((result: ClothDialogResult) => {
+      if (result.cloth.title.length >= 4) {
+        this.store.collection('users').doc(this.userId).collection('dirty').add(result.cloth)
+      } else {
+        return
+      }
+    });
+
+  }
 
   editCloth(list: 'clean' | 'dirty' | 'washing', cloth: ICloth): void {
     const dialogRef = this.dialog.open(ClothDialogComponent, {
@@ -88,7 +96,11 @@ export class ClothsComponent {
       if (result.delete) {
         this.store.collection('users').doc(this.userId).collection(list).doc(cloth.id).delete();
       } else {
-        this.store.collection('users').doc(this.userId).collection(list).doc(cloth.id).update(cloth);
+        if (result.cloth.title.length >= 4) {
+          this.store.collection('users').doc(this.userId).collection(list).doc(cloth.id).update(cloth);
+        } else {
+          window.location.reload();
+        }
       }
     });
   }

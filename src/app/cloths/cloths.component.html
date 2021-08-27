@@ -1,39 +1,40 @@
 <div *ngIf="auth.user | async as user">
-  <button mat-button (click)="newCloth()">
-      <mat-icon>add</mat-icon>
-      <span>Add cloth</span>     
-  </button>
-  
-  <div class="container-wrapper">
-      <div class="container">
-          <h2>Clean</h2>
-          <mat-card cdkDropList id="clean" #cleanList="cdkDropList" [cdkDropListData]="clean | async"
-              (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="[dirtyList, washingList]">
-              <p class="empty-list" *ngIf="(clean | async)?.length == 0">No more clean cloths</p>
-              <app-cloth cdkDrag *ngFor="let cloth of clean | async" [cloth]="cloth"
-                  (edit)="editCloth('clean', $event)">
-              </app-cloth>
-          </mat-card>
-      </div>
-      <div class="container">
-          <h2>Dirty</h2>
-          <mat-card cdkDropList id="dirty" #dirtyList="cdkDropList" [cdkDropListData]="dirty | async"
-              (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="[cleanList, washingList]">
-              <p class="empty-list" *ngIf="(dirty | async)?.length == 0">No more dirty cloths</p>
-              <app-cloth cdkDrag *ngFor="let cloth of dirty | async" [cloth]="cloth"
-                  (edit)="editCloth('dirty', $event)">
-              </app-cloth>
-          </mat-card>
-      </div>
-      <div class="container">
-          <h2>Washing...</h2>
-          <mat-card cdkDropList id="washing" #washingList="cdkDropList" [cdkDropListData]="washing | async"
-              (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="[cleanList, dirtyList]">
-              <p class="empty-list" *ngIf="(washing | async)?.length == 0">No more washing cloths</p>
-              <app-cloth cdkDrag *ngFor="let cloth of washing | async" [cloth]="cloth"
-                  (edit)="editCloth('washing', $event)">
-              </app-cloth>
-          </mat-card>
-      </div>
-  </div>
+    <h1>Welcome to your GardeLog, {{user.displayName}}!</h1>
+    <button mat-raised-button color="accent" (click)="newCloth()">
+        <mat-icon>add</mat-icon>
+        Add cloth
+    </button>
+    <br><br>
+    <div class="container-wrapper">
+        <div class="container clean-container">
+            <mat-card cdkDropList id="clean" #cleanList="cdkDropList" [cdkDropListData]="clean | async"
+                (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="[dirtyList, washingList]">
+                <h2>Clean</h2>
+                <p class="empty-list" *ngIf="(clean | async)?.length == 0">No more clean cloths</p>
+                <app-cloth cdkDrag *ngFor="let cloth of clean | async" [cloth]="cloth"
+                    (edit)="editCloth('clean', $event)">
+                </app-cloth>
+            </mat-card>
+        </div>
+        <div class="container dirty-container">
+            <mat-card cdkDropList id="dirty" #dirtyList="cdkDropList" [cdkDropListData]="dirty | async"
+                (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="[cleanList, washingList]">
+                <h2>Dirty</h2>
+                <p class="empty-list" *ngIf="(dirty | async)?.length == 0">No more dirty cloths</p>
+                <app-cloth cdkDrag *ngFor="let cloth of dirty | async" [cloth]="cloth"
+                    (edit)="editCloth('dirty', $event)">
+                </app-cloth>
+            </mat-card>
+        </div>
+        <div class="container">
+            <mat-card cdkDropList id="washing" #washingList="cdkDropList" [cdkDropListData]="washing | async"
+                (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="[cleanList, dirtyList]">
+                <h2>Washing</h2>
+                <p class="empty-list" *ngIf="(washing | async)?.length == 0">No more washing cloths</p>
+                <app-cloth cdkDrag *ngFor="let cloth of washing | async" [cloth]="cloth"
+                    (edit)="editCloth('washing', $event)">
+                </app-cloth>
+            </mat-card>
+        </div>
+    </div>
 </div>

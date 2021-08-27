@@ -4,18 +4,24 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LoggedInGuard } from 'ngx-auth-firebaseui';
 
-import { ClothsComponent } from './cloths/cloths.component';
+import { ClothesComponent } from './cloths/cloths.component';
 import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   {
-    path: 'cloths',
-    component: ClothsComponent,
+    path: 'clothes',
+    component: ClothesComponent,
     canActivate: [LoggedInGuard]
   },
   {
-    path: 'home',
+    path: '',
     component: HomeComponent,
+    pathMatch: 'full'
+  },
+  { 
+    path: '**', 
+    component: NotFoundComponent 
   }
 ];
 

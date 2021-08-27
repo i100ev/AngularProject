@@ -7,6 +7,46 @@ button {
     margin-right: 5px;
 }
 
-.activebutton {
+/* .activebutton {
     background: rgb(206, 216, 207);
+} */
+
+.mat-toolbar.mat-primary {
+    background: #4F9DB4;
+}
+
+.mat-button-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    width: 100%;
+    margin: auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.logo .mat-icon {
+    font-size: 60px;
+    display: block;
+    height: auto;
+    width: auto;
+}
+
+.logo span {
+    display: block;
+    font-size: 32px;
+}
+
+.header-btn-text {
+    font-size: 20px;
 }

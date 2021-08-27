@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -21,6 +22,7 @@ import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
     MatToolbarModule,
     MatIconModule,
     NgxAuthFirebaseUIModule,
+    MatButtonModule
   ],
   exports: [
     HeaderComponent

@@ -10,11 +10,12 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 
 import { ClothDialogComponent } from './cloth-dialog/cloth-dialog.component';
-import { ClothsComponent } from './cloths.component';
+import { ClothesComponent } from './cloths.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
-    ClothsComponent,
+    ClothesComponent,
     ClothComponent,
     ClothDialogComponent
   ],
@@ -26,10 +27,11 @@ import { ClothsComponent } from './cloths.component';
     DragDropModule,
     MatDialogModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule
   ],
   exports: [
-    ClothsComponent
+    ClothesComponent
   ],
   providers: [
 

@@ -20,7 +20,7 @@ export class HeaderComponent {
     this.auth.signOut().then(() => {
       localStorage.clear();
     }).then(() => {
-      this.router.navigate(['cloths']);
+      this.router.navigate(['']);
     });
   }
 }

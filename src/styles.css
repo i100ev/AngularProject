@@ -7,9 +7,13 @@ html, body {
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+    background: #E6FBFF;
 }
 
 .content-wrapper {
-    max-width: 1400px;
+    max-width: 1320px;
     margin: auto;
+    background: #fff;
+    min-height: calc(100% - 144px);
+    padding: 40px;
 }

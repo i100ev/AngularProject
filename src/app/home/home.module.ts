@@ -9,6 +9,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { FormsModule } from '@angular/forms';
     DragDropModule,
     MatDialogModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    RouterModule,
+    MatTabsModule
   ],
   exports: [
     HomeComponent

@@ -8,10 +8,20 @@
     margin: 0 25px 25px 0;
 }
 
-.cdk-drag-placeholder {
-    opacity: 0;
+.tips-img {
+    float: left;
+    max-width: 320px;
+    margin-right: 30px;
 }
 
-.cdk-drag-animating {
-    transition: transform 500ms;
+mat-tab-body p {
+    margin-top: 30px;
+}
+
+.caution {
+    background: yellow;
+    text-align: center;
+    font-size: 19px;
+    padding: 10px;
+    border: 2px dashed red;
 }

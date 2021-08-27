@@ -1,1 +1,132 @@
-home works
+<div *ngIf="auth.user | async as user; else showLogin">
+    <div>
+        <h2>Welcome to GardeLog, {{ user.displayName }}!</h2>
+    </div>
+</div>
+<ng-template #showLogin>
+    <div>
+        <h2>Welcome to GardeLog!</h2>
+        <p class="caution">Please <a routerLink="login">Login</a> or <a routerLink="register">Register</a> if you want to enjoy the full
+            experience of the app and have your own Wardrobe Catalog</p>
+    </div>
+</ng-template>
+<br>
+<h2>7 Steps to Wash Your Clothes</h2>
+<mat-tab-group mat-align-tabs="center">
+    <mat-tab label="First">
+        <ng-template matTabContent>
+            <br>
+            <img src="../../assets/1.jpg" class="tips-img" alt="Sort your clothes into piles">
+            <p><b>Sort your clothes into piles.</b> When washing clothes, there are two main things to keep in mind:
+                what
+                the color of the clothes are, and what material they are made out of. Not all fabrics can handle the
+                same amount of water pressure or level of tumbling.</p>
+            <ul>
+                <li>Separate light and dark-colored clothes. When you wash your clothes, especially new clothes, some of
+                    the dye used on the fabric will run out of the clothes (that's why older clothes have a more faded
+                    color than bright, new clothes.) Any clothes that are white, cream, or a light, pale pastel color,
+                    should go in the ‘whites’ pile, while all other colored clothes should go in the ‘dark’ pile. If you
+                    don’t separate, your new bright blue shirt might dye all of your white clothes blue.</li>
+                <li>Separate your clothes based on the fabrics they are made out of. Some fabrics, like denim or thick
+                    cloth (like a towel) need to be washed on a heavier wash cycle than your silky lingerie (which gets
+                    washed on a delicate setting). You should separate your clothes by the sort of wash cycle their
+                    fabrics are meant to be washed in.</li>
+            </ul>
+        </ng-template>
+    </mat-tab>
+    <mat-tab label="Second">
+        <ng-template matTabContent>
+            <br>
+            <img src="../../assets/2.jpg" class="tips-img" alt="Read the ‘care tag’ on your clothes">
+            <p><b>Read the ‘care tag’ on your clothes.</b> The cloth tags are not just sewn into clothes to make your
+                neck itchy when they rub against your skin--they’re actually there to help guide you through the washing
+                process. When in doubt about how to wash an item, check the tag. The care tags tell you what fabric the
+                item is made of, how it should be washed, and how it should be dried.</p>
+            <ul>
+                <li>Some clothes need to be dry cleaned or washed by hand (see Method Two for how to do this.) The care
+                    tag will tell you if either of these things are necessary.</li>
+            </ul>
+        </ng-template>
+    </mat-tab>
+    <mat-tab label="Third">
+        <br>
+        <img src="../../assets/3.jpg" class="tips-img" alt="Know what water temperature to select.">
+        <p><b>Know what water temperature to select.</b> Washing machines have different temperature settings because
+            some fabrics and colors require different levels of heat to be washed thoroughly. The settings also vary
+            between semi-automatic and automatic machines.</p>
+        <ul>
+            <li>Use hot water for light colors, particularly light colors that are especially dirty. The heat will scald
+                the stains right out of those white items.</li>
+            <li>Use cold water for dark colors, as cold water reduces the amount of dye that runs from these clothes (so
+                your clothes won’t fade as fast when you use cold water.) Cotton items should also be washed in cold
+                water as they are less likely to shrink in cold water.</li>
+        </ul>
+    </mat-tab>
+    <mat-tab label="Fourth">
+        <br>
+        <img src="../../assets/4.jpg" class="tips-img" alt="Know what size load to select.">
+        <p><b>Know what size load to select.</b> Most washing machines have a knob that you must turn to select the
+            right size load for the amount of clothing you have (generally either small, medium or large.) If your
+            clothes fill up one-third of the machine, you should select small. Two-thirds of the machine means you
+            should select medium, and if you fill up the whole machine, you should select large.</p>
+        <ul>
+            <li>Never squish clothes down so that you can fit more in. You should just run another load with your extra
+                clothes or else you could risk jamming the machine or damaging it in some other way.</li>
+        </ul>
+    </mat-tab>
+    <mat-tab label="Fifth">
+        <br>
+        <img src="../../assets/5.jpg" class="tips-img" alt="Know what washing cycle to select.">
+        <p><b>Know what washing cycle to select.</b> As with temperature, washing machines also have different types of
+            cycles, as different kinds of clothing require a different level of washing.</p>
+        <ul>
+            <li>Regular/Normal cycle: Select this when washing white clothes. It will leave your white items crisp and
+                fresh.</li>
+            <li>Permanent press: Use this for your colored clothes. This cycle washes with warm water and ends with
+                cooler water, which keeps your colors looking bright.</li>
+            <li>Delicate: As you might guess, anything that is relatively delicate (bras, dry-fit wear, cotton sweaters,
+                dress shirts, etc.) Always make sure that your delicates do not require you to dry-clean or hand wash
+                them (check the tag to make sure.)</li>
+        </ul>
+    </mat-tab>
+    <mat-tab label="Sixth">
+        <br>
+        <img src="../../assets/6.jpg" class="tips-img" alt="Add the right kind of washing fluid and close the door.">
+        <p><b>Add the right kind of washing fluid and close the door.</b> Washing fluid includes detergent, bleach, and
+            fabric softener. You can either add your clothes and pour the right washing fluid on them, or keep your
+            clothes out of the washer, fill the washer ⅓ of the way with water, add the washing fluid, and then add the
+            clothes.</p>
+        <ul>
+            <li>Detergent: The amount of detergent you put in your washing machine is determined by how large your load
+                is. Generally, detergent lids act as cups that have marked off amounts. Generally, ⅓ of the cup should
+                be filled with detergent for a small load, ⅔ for a medium load, and a full cup for a large load.
+                However, read your specific detergent bottle for instructions on how to use that detergent--some
+                detergents are more concentrated than others, meaning you don’t need to use as much.</li>
+            <li>Bleach: Bleach is used when you want to get tough stains out of clothes, or you want your whites to be
+                really, really white. There are two kinds of bleach. Chlorine bleach is good for really making your
+                whites white but should never be used on any colored fabric. All-fabric bleach can be used on colored
+                fabrics.</li>
+            <li>Fabric softener: Fabric softener can be added during the rinse cycle. Some machines have a dispenser
+                where you can pour the softener when you begin the wash cycle, and it will add it to the rinse cycle at
+                the right time.</li>
+        </ul>
+    </mat-tab>
+    <mat-tab label="Seventh">
+        <br>
+        <img src="../../assets/7.jpg" class="tips-img" alt="Move your clothes to the dryer and select the right cycle.">
+        <p><b>Move your clothes to the dryer and select the right cycle.</b> Keep in mind that there are some clothes
+            that should be air dried. Check the tag--if it says not to dry it, hang these items somewhere they can dry.
+            Like the washing machine, the dryer also has settings that you have to wade through to dry your clothes. Add
+            a dryer sheet and close the door.</p>
+        <ul>
+            <li>Regular/heavy: White clothes are best dried on the regular/heavy setting. White clothes are generally
+                pre-shrunk and can handle the more intense and higher heat drying system (unlike colors which fade under
+                high heat.)</li>
+            <li>Permanent press: This is better for regular colored clothes. The medium heat and pressure makes sure
+                that your clothes don’t fade.</li>
+            <li>Delicate: Any clothes that you washed on the delicate setting should be dried on the delicate setting.
+                This setting uses close to room temperature air and slow cycle so that no damage comes to your
+                delicates.</li>
+        </ul>
+    </mat-tab>
+</mat-tab-group>

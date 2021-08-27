@@ -15,3 +15,20 @@
 .cdk-drag-animating {
     transition: transform 500ms;
 }
+
+.container {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#clean {
+    background: #C7F5D6;
+}
+
+#dirty {
+    background: #ffa3b1;
+}
+
+#washing {
+    background: #fce2aa;
+}

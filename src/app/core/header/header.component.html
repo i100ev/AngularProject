@@ -1,38 +1,39 @@
 <mat-toolbar color="primary">
-  <div>
-    <button mat-icon-button routerLink="home" routerLinkActive="activebutton">
-      <span>Home</span>
-      <mat-icon>home</mat-icon>
-    </button>
-  </div>
-  <div *ngIf="auth.user | async as user; else showLogin">
-    <button mat-icon-button routerLink="cloths" routerLinkActive="activebutton">
-      <span>Clothes</span>
-      <mat-icon>checkroom</mat-icon>
-    </button>
-    <button mat-icon-button routerLink="profile" routerLinkActive="activebutton">
-      <span>Profile</span>
-      <mat-icon>person</mat-icon>
-    </button>
-    <button mat-icon-button (click)="logout()">
-      <span>Logout</span>
-      <mat-icon>logout</mat-icon>
-    </button>
-    
-  </div>
 
-  <ng-template #showLogin>
-    <div>
-      <button mat-icon-button routerLink="login" routerLinkActive="activebutton">
-        <span>Login</span>
-        <mat-icon>login</mat-icon>
+  <div class="header-container">
+    <div routerLink="" class="logo">
+      <mat-icon aria-hidden="false">checkroom</mat-icon>
+      <span>GardeLog</span>
+    </div>
+    <div *ngIf="auth.user | async as user; else showLogin">
+      <button mat-raised-button routerLink="clothes" routerLinkActive="activebutton">
+        Clothes
+        <mat-icon>checkroom</mat-icon>
       </button>
-      <button mat-icon-button routerLink="register" routerLinkActive="activebutton">
-        <span>Register</span>
-        <mat-icon>how_to_reg</mat-icon>
+      <button mat-raised-button routerLink="profile" routerLinkActive="activebutton">
+        Profile
+        <mat-icon>person</mat-icon>
       </button>
+      <button mat-raised-button (click)="logout()" color="warn">
+        Logout
+        <mat-icon>logout</mat-icon>
+      </button>
+
     </div>
 
-  </ng-template>
+    <ng-template #showLogin>
+      <div>
+        <button mat-raised-button routerLink="login" routerLinkActive="activebutton" color="primary">
+          Login
+          <mat-icon>login</mat-icon>
+        </button>
+        <button mat-raised-button routerLink="register" routerLinkActive="activebutton">
+          Register
+          <mat-icon>how_to_reg</mat-icon>
+        </button>
+      </div>
+    </ng-template>
+
+  </div>
   <!-- <ngx-auth-firebaseui-avatar></ngx-auth-firebaseui-avatar> -->
 </mat-toolbar>

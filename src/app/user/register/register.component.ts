@@ -24,6 +24,6 @@ export class RegisterComponent implements OnInit {
         localStorage.setItem('user', result.uid);
       }
     });
-    this.router.navigate(['cloths']);
+    this.router.navigate(['clothes']);
   }
 }

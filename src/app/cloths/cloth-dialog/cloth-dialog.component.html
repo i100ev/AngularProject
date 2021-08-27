@@ -1,7 +1,17 @@
 <mat-form-field>
-  <mat-label>Title</mat-label>
-  <input matInput cdkFocusInitial [(ngModel)]="data.cloth.title">
+  <mat-label>Cloth</mat-label>
+  <input id="clothTitle" name="clothTitle" matInput cdkFocusInitial [(ngModel)]="data.cloth.title" required
+    minlength="4" #clothTitle="ngModel">
 </mat-form-field>
+<div *ngIf="clothTitle.invalid && (clothTitle.dirty || clothTitle.touched)" class="alert">
+  <div *ngIf="clothTitle.errors?.required">
+    <p class="error-msg">Cloth title is required.</p>
+  </div>
+  <div *ngIf="clothTitle.errors?.minlength">
+    <p class="error-msg">Cloth title must be at least 4 characters long.</p>
+  </div>
+
+</div>
 
 <mat-form-field>
   <mat-label>Description</mat-label>
@@ -9,13 +19,15 @@
 </mat-form-field>
 
 <div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="{ cloth: data.cloth}">OK</button>
-  <button mat-button (click)="cancel()">Cancel</button>
-  <button
-    *ngIf="data.enableDelete"
-    mat-fab
-    color="primary"
-    aria-label="Delete"
+  <button mat-raised-button color="primary" [mat-dialog-close]="{ cloth: data.cloth }" [disabled]="clothTitle.invalid">
+    OK
+  </button>
+
+  <button mat-raised-button color="accent" (click)="cancel()">
+    Cancel
+  </button>
+
+  <button *ngIf="data.enableDelete" mat-fab color="warn" aria-label="Delete"
     [mat-dialog-close]="{ cloth: data.cloth, delete: true }">
     <mat-icon>delete</mat-icon>
   </button>
