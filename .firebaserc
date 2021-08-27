@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "gardelog-6b0f8": {
+      "hosting": {
+        "AngularProject": [
+          "gardelog-6b0f8"
+        ]
+      }
+    }
+  }
+}
