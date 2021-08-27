@@ -13,10 +13,10 @@ After registrasion user can create a catalogue of clothes by adding, editing or 
 Clothes can be stored in categories as 'clean', 'durty' or 'washing' and can be dragged and dropped between them.
 
 ## Technologies
-* Project is created with:
+Project is created with:
 * Node: 14.15.4
 * Angular: 12.2.2
-* Firebae 8.10.0
+* Firebase 8.10.0
 * HTML5
 * CCS3
 
